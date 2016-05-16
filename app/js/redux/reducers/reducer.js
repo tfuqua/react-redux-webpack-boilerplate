@@ -1,12 +1,12 @@
 import * as ActionTypes from '../constants/constants';
 
-const initialState = { data: {} };
+const initialState = { employees: {} };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case ActionTypes.GET_TEST_DATA :
       return {
-        data: action,
+        employees: action,
       };
 
     default:

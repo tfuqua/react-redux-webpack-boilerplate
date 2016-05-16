@@ -4,5 +4,5 @@ export function getTestData(req, res) {
     { firstName: 'Anna', lastName: 'Smith' },
     { firstName: 'Peter', lastName: 'Jones' }
   ];
-  res.json({ data: employees });
+  res.json({ employees });
 }
