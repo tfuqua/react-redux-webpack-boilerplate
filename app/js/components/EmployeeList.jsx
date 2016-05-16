@@ -5,8 +5,13 @@ import * as Actions from '../redux/actions/actions';
 class EmployeeList extends Component {
 
   componentDidMount() {
+    const that = this;
+
     if (this.props.employees === undefined) {
-      this.props.dispatch(Actions.getTestData());
+      setTimeout(function()
+      {
+        that.props.dispatch(Actions.getTestData());
+      }, 2000);
     }
   }
 
