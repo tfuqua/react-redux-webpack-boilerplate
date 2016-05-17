@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import EmployeeList from '../components/EmployeeList.jsx';
+import EmployeeTable from '../components/EmployeeTable.jsx';
 import * as Actions from '../redux/actions/actions';
 
 class TestContainer extends Component {
@@ -9,10 +9,8 @@ class TestContainer extends Component {
     return (
       <div className="container-fluid">
         <h3>Employees</h3>
-        <p>
-          The data below is fetched from /api/test. This can be done client side or server side
-        </p>
-        <EmployeeList employees={this.props.employees} />
+
+        <EmployeeTable employees={this.props.employees} />
       </div>
     );
   }
@@ -23,7 +21,7 @@ TestContainer.need = [() => {
 }];
 
 TestContainer.propTypes = {
-  employees: PropTypes.object.isRequired,
+  employees: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 

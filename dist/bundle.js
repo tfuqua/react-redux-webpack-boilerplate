@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "823656a6d3dbe7fe71d0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7e0baad21a45554dc80d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -27247,9 +27247,9 @@
 
 	var _reactRedux = __webpack_require__(549);
 
-	var _EmployeeList = __webpack_require__(579);
+	var _EmployeeTable = __webpack_require__(579);
 
-	var _EmployeeList2 = _interopRequireDefault(_EmployeeList);
+	var _EmployeeTable2 = _interopRequireDefault(_EmployeeTable);
 
 	var _actions = __webpack_require__(544);
 
@@ -27311,12 +27311,7 @@
 	          null,
 	          'Employees'
 	        ),
-	        _react3.default.createElement(
-	          'p',
-	          null,
-	          'The data below is fetched from /api/test. This can be done client side or server side'
-	        ),
-	        _react3.default.createElement(_EmployeeList2.default, { employees: this.props.employees })
+	        _react3.default.createElement(_EmployeeTable2.default, { employees: this.props.employees })
 	      );
 	    }
 	  }]);
@@ -27329,7 +27324,7 @@
 	}];
 
 	TestContainer.propTypes = {
-	  employees: _react2.PropTypes.object.isRequired,
+	  employees: _react2.PropTypes.array.isRequired,
 	  dispatch: _react2.PropTypes.func.isRequired
 	};
 
@@ -27387,20 +27382,20 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _components = {
-	  EmployeeList: {
-	    displayName: 'EmployeeList'
+	  EmployeeTable: {
+	    displayName: 'EmployeeTable'
 	  }
 	};
 
 	var _UsersTfuquaWebReactReduxWebpackBoilerplateNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-	  filename: '/Users/tfuqua/Web/react-redux-webpack-boilerplate/app/js/components/EmployeeList.jsx',
+	  filename: '/Users/tfuqua/Web/react-redux-webpack-boilerplate/app/js/components/EmployeeTable.jsx',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
 	});
 
 	var _UsersTfuquaWebReactReduxWebpackBoilerplateNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-	  filename: '/Users/tfuqua/Web/react-redux-webpack-boilerplate/app/js/components/EmployeeList.jsx',
+	  filename: '/Users/tfuqua/Web/react-redux-webpack-boilerplate/app/js/components/EmployeeTable.jsx',
 	  components: _components,
 	  locals: [],
 	  imports: [_react3.default, _index2.default]
@@ -27412,25 +27407,34 @@
 	  };
 	}
 
-	var EmployeeList = _wrapComponent('EmployeeList')(function (_Component) {
-	  _inherits(EmployeeList, _Component);
+	var EmployeeTable = _wrapComponent('EmployeeTable')(function (_Component) {
+	  _inherits(EmployeeTable, _Component);
 
-	  function EmployeeList() {
-	    _classCallCheck(this, EmployeeList);
+	  function EmployeeTable() {
+	    _classCallCheck(this, EmployeeTable);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(EmployeeList).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(EmployeeTable).apply(this, arguments));
 	  }
 
-	  _createClass(EmployeeList, [{
+	  _createClass(EmployeeTable, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      var that = this;
+
 	      if (this.props.employees === undefined) {
-	        this.props.dispatch(Actions.getTestData());
+	        setTimeout(function () {
+	          that.props.dispatch(Actions.getTestData());
+	        }, 500);
 	      }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+
+	      var imgStyle = {
+	        width: '100px'
+	      };
+
 	      return this.props.employees === undefined ? _react3.default.createElement(
 	        'p',
 	        null,
@@ -27439,31 +27443,90 @@
 	        'div',
 	        { className: 'listView' },
 	        _react3.default.createElement(
-	          'div',
-	          { className: 'employee-data' },
-	          this.props.employees.map(function (employee, index) {
-	            return _react3.default.createElement(
-	              'div',
-	              { key: index },
-	              employee.firstName,
-	              ' ',
-	              employee.lastName
-	            );
-	          })
+	          'table',
+	          { className: 'table table-striped table-bordered' },
+	          _react3.default.createElement(
+	            'thead',
+	            null,
+	            _react3.default.createElement(
+	              'tr',
+	              null,
+	              _react3.default.createElement(
+	                'th',
+	                null,
+	                'Avatar'
+	              ),
+	              _react3.default.createElement(
+	                'th',
+	                null,
+	                'First Name'
+	              ),
+	              _react3.default.createElement(
+	                'th',
+	                null,
+	                'Last Name'
+	              ),
+	              _react3.default.createElement(
+	                'th',
+	                null,
+	                'Email '
+	              ),
+	              _react3.default.createElement(
+	                'th',
+	                null,
+	                'Full Time Employee'
+	              )
+	            )
+	          ),
+	          _react3.default.createElement(
+	            'tbody',
+	            null,
+	            this.props.employees.map(function (employee, index) {
+	              return _react3.default.createElement(
+	                'tr',
+	                { key: index },
+	                _react3.default.createElement(
+	                  'td',
+	                  null,
+	                  _react3.default.createElement('img', { style: imgStyle, src: employee.img, alt: 'avatar' })
+	                ),
+	                _react3.default.createElement(
+	                  'td',
+	                  null,
+	                  employee.firstName
+	                ),
+	                _react3.default.createElement(
+	                  'td',
+	                  null,
+	                  employee.lastName
+	                ),
+	                _react3.default.createElement(
+	                  'td',
+	                  null,
+	                  employee.email
+	                ),
+	                _react3.default.createElement(
+	                  'td',
+	                  null,
+	                  employee.fullTime ? 'Yes' : 'No'
+	                )
+	              );
+	            })
+	          )
 	        )
 	      );
 	    }
 	  }]);
 
-	  return EmployeeList;
+	  return EmployeeTable;
 	}(_react2.Component));
 
-	EmployeeList.propTypes = {
-	  employees: _react2.PropTypes.object.isRequired,
+	EmployeeTable.propTypes = {
+	  employees: _react2.PropTypes.array.isRequired,
 	  dispatch: _react2.PropTypes.func.isRequired
 	};
 
-	exports.default = (0, _reactRedux.connect)()(EmployeeList);
+	exports.default = (0, _reactRedux.connect)()(EmployeeTable);
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },

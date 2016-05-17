@@ -1,8 +1,16 @@
+import { Range, Map } from 'immutable';
+import faker from 'faker';
+
 export function getTestData(req, res) {
-  const employees = [
-    { firstName: 'John', lastName: 'Doe' },
-    { firstName: 'Anna', lastName: 'Smith' },
-    { firstName: 'Peter', lastName: 'Jones' }
-  ];
+  const employees = Range(0, 100)
+    .map(id => Map({
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      email: faker.internet.email(),
+      fullTime: faker.random.boolean(),
+      img: faker.image.avatar(),
+    }))
+    .take(10);
+
   res.json({ employees });
 }
